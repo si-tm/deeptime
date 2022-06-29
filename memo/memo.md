@@ -37,7 +37,7 @@ ERROR: Could not find a version that satisfies the requirement vampnet (from ver
 ERROR: No matching distribution found for vampnet
 Note: you may need to restart the kernel to use updated packages.
 ```
-[pythonライブラリバージョン問題](https://kajindowsxp.com/pip-unable/)
+
 
 3. [ここ](../vampnet/README.md)を実行
 ```
@@ -55,3 +55,8 @@ git clone https://github.com/markovmodel/mdshare.git pip install ./mdshare
 ```
 Successfully installed humanfriendly-10.0 mdshare-0.4.2
 ```
+4. [pythonライブラリバージョン問題](https://kajindowsxp.com/pip-unable/)
+
+![pypi](../images/no_vampnet.png)
+
+ここにはなさそう
