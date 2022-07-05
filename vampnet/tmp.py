@@ -1,0 +1,3 @@
+import vampnet
+
+print("succcess")

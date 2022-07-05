@@ -60,3 +60,81 @@ Successfully installed humanfriendly-10.0 mdshare-0.4.2
 ![pypi](../images/no_vampnet.png)
 
 ここにはなさそう
+
+
+→
+go to the vampnet folder and do
+```
+python3 setup.py install
+```
+できた！
+### 2022/06/30
+[***1D_double_well.ipynb***](../vampnet/1D_double_well.ipynb)を実行する  
+エラー集  
+1. 
+```
+adam = optimizers.adam(lr = learning_rate)
+AttributeError: module 'keras.optimizers' has no attribute 'adam'
+```
+→ [この記事](https://qiita.com/hetare/questions/b39b7deacf83e257f2ae)を参考に
+```
+adam = optimizers.Adam(lr = learning_rate)
+```
+変更  
+2. 
+
+```
+Output exceeds the size limit. Open the full output data in a text editor
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+/Users/maya/Desktop/lab/deeptime/deeptime/vampnet/1D_double_well.ipynb 
+---> 64     hist = model.fit([X1_train, X2_train], Y_train ,batch_size=batch_size, epochs=nb_epoch, verbose=0,
+```
+```
+File "/Users/maya/Desktop/lab/deeptime/deeptime/vampnet/vampnet/vampnet.py", line 660, in _prep_data  *
+        b = tf.to_float(shape[0])
+
+    AttributeError: module 'tensorflow' has no attribute 'to_float'
+```
+→ [参考](https://github.com/google/tangent/issues/95)
+```
+deeptime/deeptime/vampnet/vampnet/vampnet.py
+```
+の660行目を変更
+```
+# b = tf.to_float(shape[0])
+b = tf.cast(shape[0])
+```
+次のエラー
+```
+File "/Users/maya/Desktop/lab/deeptime/deeptime/vampnet/vampnet/vampnet.py", line 661, in _prep_data  *
+        b = tf.cast(shape[0])
+
+    TypeError: Missing required positional argument
+```
+```
+# b = tf.to_float(shape[0])
+        b = tf.cast(shape[0], tf.float32)
+```
+これに変更
+3. 
+```
+ File "/Users/maya/Desktop/lab/deeptime/deeptime/vampnet/vampnet/vampnet.py", line 608, in _inv  *
+        eigval_all, eigvec_all = tf.self_adjoint_eig(x)
+
+    AttributeError: module 'tensorflow' has no attribute 'self_adjoint_eig'
+```
+[参考](https://aiacademy.jp/media/?p=1610)
+
+4. 
+```
+ File "/Users/maya/Desktop/lab/deeptime/deeptime/vampnet/vampnet/vampnet.py", line 608, in _inv  *
+        eigval_all, eigvec_all = tf.self_adjoint_eig(x)
+
+    AttributeError: module 'tensorflow' has no attribute 'self_adjoint_eig'
+```
+vampnet.py 698行
+```
+ # eigval_all, eigvec_all = tf.self_adjoint_eig(x)
+   eigval_all, eigvec_all = tf.SelfAdjointEig(x)
+```

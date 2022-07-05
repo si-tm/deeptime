@@ -606,6 +606,7 @@ class VampnetTools(object):
 
         # Calculate eigvalues and eigvectors
         eigval_all, eigvec_all = tf.self_adjoint_eig(x)
+        # eigval_all, eigvec_all = tf.SelfAdjointEig(x)
 
         # Filter out eigvalues below threshold and corresponding eigvectors
         eig_th = tf.constant(self.epsilon, dtype=tf.float32)
@@ -657,7 +658,8 @@ class VampnetTools(object):
         '''
 
         shape = tf.shape(data)
-        b = tf.to_float(shape[0])
+        # b = tf.to_float(shape[0])
+        b = tf.cast(shape[0], tf.float32)
         o = shape[1]//2
 
         # Split the data of the two networks and transpose it
