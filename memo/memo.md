@@ -138,3 +138,9 @@ vampnet.py 698行
  # eigval_all, eigvec_all = tf.self_adjoint_eig(x)
    eigval_all, eigvec_all = tf.SelfAdjointEig(x)
 ```
+
+2022/07/12
+**dockerを使う**
+- tensorflow1を使いたい！[イメージ](https://hub.docker.com/layers/tensorflow/tensorflow/tensorflow/1.15.3-py3/images/sha256-3f0cd0e85380afb2af3a30703de75a1ec4f3facb00d630714fb2d80d3e36f77f?context=explore)
+- dockerのコンテナ内でgitを使う
+https://www.slideshare.net/KazuhiroSuga/dockergit
